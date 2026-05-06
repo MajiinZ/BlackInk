@@ -1,15 +1,14 @@
 rootProject.name = "build-logic"
 
 dependencyResolutionManagement {
-    repositories{
+    repositories {
         google()
         mavenCentral()
         gradlePluginPortal()
     }
     versionCatalogs {
         create("libs") {
-            from(files(".../gradle/libs.versions.toml")))
-                }
+            from(files("../gradle/libs.versions.toml"))
         }
     }
 }

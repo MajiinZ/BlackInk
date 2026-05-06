@@ -10,7 +10,7 @@ kotlin {
     // which platforms this KMP module supports.
     // See: https://kotlinlang.org/docs/multiplatform-discover-project.html#targets
     androidLibrary {
-        namespace = "com.mz.chat.data"
+        namespace = "com.mz.build_logic"
         compileSdk = 36
         minSdk = 24
 
@@ -31,7 +31,7 @@ kotlin {
     // A step-by-step guide on how to include this library in an XCode
     // project can be found here:
     // https://developer.android.com/kotlin/multiplatform/migrate
-    val xcfName = "feature:chat:dataKit"
+    val xcfName = "project:build-logicKit"
 
     iosX64 {
         binaries.framework {
@@ -51,6 +51,8 @@ kotlin {
         }
     }
 
+
+
     // Source set declarations.
     // Declaring a target automatically creates a source set with the same name. By default, the
     // Kotlin Gradle Plugin creates additional source sets that depend on each other, since it is
@@ -60,10 +62,10 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
-                implementation(projects.core.domain)
-                implementation(projects.feature.chat.domain)
-                implementation(projects.feature.chat.database)
-                // Add KMP dependencies here
+                compileOnly(libs.android.gradlePlugin)
+                compileOnly(libs.android.tools.common)
+                compileOnly(libs.kotlin.gradlePlugin)
+                compileOnly(libs.compose.gradlePlugin)
             }
         }
 
@@ -81,6 +83,13 @@ kotlin {
             }
         }
 
+        getByName("androidDeviceTest") {
+            dependencies {
+                implementation(libs.androidx.runner)
+                implementation(libs.androidx.test.core)
+                implementation(libs.androidx.junit)
+            }
+        }
 
         iosMain {
             dependencies {

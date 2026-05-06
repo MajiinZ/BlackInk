@@ -14,6 +14,12 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+    plugins {
+        kotlin("jvm") version "2.2.20"
+    }
+}
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.10.0"
 }
 
 dependencyResolutionManagement {
@@ -42,3 +48,4 @@ include(":feature:chat:data")
 include(":feature:auth:domain")
 include(":feature:chat:database")
 include(":feature:chat:presentationn")
+include(":project:build_logic")
