@@ -60,16 +60,12 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
-            }
-        }
 
-        commonTest {
-            dependencies {
-                implementation(libs.kotlin.test)
                 implementation(projects.core.domain)
-                implementation(projects.core.designsystem)
                 implementation(projects.feature.chat.domain)
+                implementation(projects.core.designsystem)
+                // Add KMP dependencies here
+
             }
         }
 
