@@ -1,21 +1,22 @@
-rootProject.name = "BlackInk"
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+rootProject.name = "build-logic"
+
 
 
 dependencyResolutionManagement {
-    //includeBuild("BlackInk")
     repositories {
         google()
         mavenCentral()
         gradlePluginPortal()
+
+    }
+    versionCatalogs {
+        create("libs") {
+            from(files("..gradle/libs.versions.toml"))
+        }
     }
 
-
-versionCatalogs {
-    create("libs"){
-        from(files("../gradle/libs.versions.toml"))
-    }
 }
+
 
 
 include(":convention")

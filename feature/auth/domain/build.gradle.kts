@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
-    alias(libs.plugins.android.lint)
 }
 
 kotlin {
@@ -10,7 +9,7 @@ kotlin {
     // which platforms this KMP module supports.
     // See: https://kotlinlang.org/docs/multiplatform-discover-project.html#targets
     androidLibrary {
-        namespace = "com.mz.auth.domain"
+        namespace = "com.mz.domain"
         compileSdk = 36
         minSdk = 24
 
@@ -33,6 +32,23 @@ kotlin {
     // https://developer.android.com/kotlin/multiplatform/migrate
     val xcfName = "feature:auth:domainKit"
 
+    iosX64 {
+        binaries.framework {
+            baseName = xcfName
+        }
+    }
+
+    iosArm64 {
+        binaries.framework {
+            baseName = xcfName
+        }
+    }
+
+    iosSimulatorArm64 {
+        binaries.framework {
+            baseName = xcfName
+        }
+    }
 
     // Source set declarations.
     // Declaring a target automatically creates a source set with the same name. By default, the
@@ -43,15 +59,8 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
-                implementation(projects.core.domain)
-                implementation(projects.core.designsystem)
-                implementation(projects.core.presentation)
-            }
-        }
 
-        commonTest {
-            dependencies {
-                implementation(libs.kotlin.test)
+                implementation(projects.core.domain)
             }
         }
 
