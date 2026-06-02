@@ -143,6 +143,7 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
 compose-gradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-serialization-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 androidx-room-gradle-plugin = { module = "androidx.room:room-gradle-plugin", version.ref = "room" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
@@ -163,7 +164,10 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 
 [plugins]
-convention-android-application = { id = "com.mz.convention.android.application" }
+convention-android-application = { id = "com.mz.convention.android.application", version = "unspecified" }
+convention-android-application-compose = { id = "com.mz.convention.android.application.compose" , version = "unspecified"  }
+convention-cmp-application = { id = "com.mz.convention.cmp.application" , version = "unspecified"  }
+convention-kmp-library = { id = "com.mz.convention.kmp.library" , version = "unspecified"  }
 
 # Android
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -187,3 +191,4 @@ google-services = { id = "com.google.gms.google-services", version.ref = "google
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 android-lint = { id = "com.android.lint", version.ref = "agp" }
+

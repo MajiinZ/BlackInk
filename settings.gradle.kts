@@ -30,9 +30,7 @@ dependencyResolutionManagement {
     }
 }
 
-plugins{
-    id("org.gradle.toolchains.foojay-resolver") version "1.0.0"
-}
+
 
 include(":composeApp")
 include(":core:presentation")
@@ -45,4 +43,5 @@ include(":feature:chat:data")
 include(":feature:auth:domain")
 include(":feature:auth:presentation")
 include(":feature:chat:database")
+include(":feature:auth:database")
 
