@@ -3,7 +3,6 @@ import org.gradle.api.JavaVersion.VERSION_17
 
 plugins {
     alias(libs.plugins.convention.kmp.library)
-    //alias(libs.plugins.convention.buildkonfig)
 }
 
 kotlin {

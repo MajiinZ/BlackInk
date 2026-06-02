@@ -3,8 +3,8 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
-    alias(libs.plugins.convention.kmp.library)
-    //alias(libs.plugins.convention.buildkonfig)
+    alias(libs.plugins.convention.cmp.feature)
+
 
 }
 
@@ -20,7 +20,21 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
 
                 implementation(projects.core.domain)
+                implementation(projects.feature.chat.domain)
+                implementation(projects.feature.chat.database)
+                implementation(projects.feature.chat.presentation)
+                implementation(projects.feature.auth.domain)
+                implementation(projects.feature.auth.presentation)
+
                 // Add KMP dependencies here
+            }
+        }
+
+        iosArm64Main{
+            dependencies {
+                implementation(projects.core.domain)
+                implementation(projects.core.designsystem)
+
             }
         }
 

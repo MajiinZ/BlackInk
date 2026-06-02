@@ -14,6 +14,9 @@ pluginManagement {
         kotlin("jvm") version "2.1.2"
     }
 }
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.10.0"
+}
 
 
 dependencyResolutionManagement {
@@ -26,6 +29,7 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+        gradlePluginPortal()
 
     }
 }
@@ -40,8 +44,10 @@ include(":core:designsystem")
 include(":feature:chat:presentation")
 include(":feature:chat:domain")
 include(":feature:chat:data")
+include(":feature:chat:database")
 include(":feature:auth:domain")
 include(":feature:auth:presentation")
-include(":feature:chat:database")
-include(":feature:auth:database")
+
+//include(":feature:auth:data")
+include("")
 
