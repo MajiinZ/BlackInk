@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 rootProject.name = "BlackInk"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
@@ -24,9 +26,13 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+
     }
 }
 
+plugins{
+    id("org.gradle.toolchains.foojay-resolver") version "1.0.0"
+}
 
 include(":composeApp")
 include(":core:presentation")

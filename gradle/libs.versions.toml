@@ -163,7 +163,7 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 
 [plugins]
-convention-android-application = { id = "com.mz.convention.android.application", version.ref = "unspecified" }
+convention-android-application = { id = "com.mz.convention.android.application" }
 
 # Android
 android-application = { id = "com.android.application", version.ref = "agp" }
