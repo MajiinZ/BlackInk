@@ -11,7 +11,7 @@ pluginManagement {
         gradlePluginPortal()
     }
     plugins {
-        kotlin("jvm") version "2.1.2"
+        kotlin("jvm") version "2.1.0"
     }
 }
 plugins {
@@ -49,5 +49,3 @@ include(":feature:auth:domain")
 include(":feature:auth:presentation")
 
 //include(":feature:auth:data")
-include("")
-

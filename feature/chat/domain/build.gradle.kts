@@ -20,11 +20,8 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
 
                 implementation(projects.core.domain)
-                implementation(projects.feature.chat.domain)
                 implementation(projects.feature.chat.database)
-                implementation(projects.feature.chat.presentation)
                 implementation(projects.feature.auth.domain)
-                implementation(projects.feature.auth.presentation)
 
                 // Add KMP dependencies here
             }
@@ -45,14 +42,10 @@ kotlin {
                 // commonMain by default and will correctly pull the Android artifacts of any KMP
                 // dependencies declared in commonMain.
                 //implementation(libs.androidx.compose.ui.tooling)
+                implementation(libs.androidx.runner)
+                implementation(libs.androidx.test.core)
+                implementation(libs.androidx.junit)
             }
-        }
-
-
-        dependencies {
-            implementation(libs.androidx.runner)
-            implementation(libs.androidx.test.core)
-            implementation(libs.androidx.junit)
         }
 
 
