@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.convention.cmp.feature)
+   // alias(libs.plugins.room)
 }
 
     kotlin {
@@ -14,6 +15,8 @@ plugins {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
+                implementation(projects.core.domain)
+
                 // Add KMP dependencies here
             }
         }

@@ -22,6 +22,7 @@ import blackink.composeapp.generated.resources.compose_multiplatform
 @Composable
 fun App() {
     MaterialTheme {
+
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly

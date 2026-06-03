@@ -15,6 +15,10 @@ dependencies {
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.kotlin.serialization.gradle.plugin)
+    implementation(libs.buildkonfig.gradlePlugin)
+    implementation(libs.ksp.gradlePlugin)
+    implementation(libs.androidx.room.gradle.plugin)
+    implementation(libs.buildkonfig.compiler)
 }
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -63,6 +67,10 @@ gradlePlugin {
         register("kmpFeature") {
             id = "com.mz.convention.kmp.feature"
             implementationClass = "KmpFeatureConventionPlugin"
+        }
+        register("buildKonfig") {
+            id = "com.mz.convention.buildkonfig"
+            implementationClass = "BuildKonfigConventionPlugin"
         }
     }
 }

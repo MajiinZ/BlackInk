@@ -1,3 +1,3 @@
-package com.mz.chat.data
+package com.mz.data
 
 expect fun platform(): String

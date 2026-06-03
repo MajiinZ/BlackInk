@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.convention.kmp.library)
+    alias(libs.plugins.convention.cmp.library)
 
 }
 
@@ -13,9 +13,9 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
-
                 implementation(projects.core.domain)
+                implementation(compose.components.resources)
+                implementation(libs.jetbrains.lifecycle.compose) // lifecycle-runtime-compose (has repeatOnLifecycle)
             }
         }
 
