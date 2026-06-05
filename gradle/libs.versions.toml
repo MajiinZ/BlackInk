@@ -172,13 +172,13 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 
 [plugins]
-convention-android-application = { id = "com.mz.convention.android.application", version = "unspecified" }
-convention-android-application-compose = { id = "com.mz.convention.android.application.compose" , version = "unspecified"  }
-convention-cmp-application = { id = "com.mz.convention.cmp.application" , version = "unspecified"  }
-convention-kmp-library = { id = "com.mz.convention.kmp.library" , version = "unspecified"  }
-convention-cmp-library = { id = "com.mz.convention.cmp.library" , version = "unspecified"  }
-convention-cmp-feature = { id = "com.mz.convention.cmp.feature" , version = "unspecified"  }
-convention-buildkonfig = { id = "com.mz.convention.buildkonfig" , version = "unspecified"  }
+convention-android-application = { id = "com.mz.convention.android.application" }
+convention-android-application-compose = { id = "com.mz.convention.android.application.compose" }
+convention-cmp-application = { id = "com.mz.convention.cmp.application" }
+convention-kmp-library = { id = "com.mz.convention.kmp.library" }
+convention-cmp-library = { id = "com.mz.convention.cmp.library" }
+convention-cmp-feature = { id = "com.mz.convention.cmp.feature" }
+convention-buildkonfig = { id = "com.mz.convention.buildkonfig" }
 
 # Android
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -210,7 +210,9 @@ koin-common = [
 ]
 ktor-common = [
     "ktor-client-core",
-    "ktor-client-auth",
     "ktor-client-content-negotiation",
-    "ktor-serialization-kotlinx-json"
+    "ktor-serialization-kotlinx-json",
+    "ktor-client-auth",
+    "ktor-client-logging"
+
 ]

@@ -45,5 +45,5 @@ include(":feature:chat:data")
 include(":feature:chat:database")
 include(":feature:auth:domain")
 include(":feature:auth:presentation")
-
+include(":core:crypto")
 //include(":feature:auth:data")

@@ -6,6 +6,7 @@ sealed interface DataError: Error {
         UNAUTHORIZED,
         FORBIDDEN,
         NOT_FOUND,
+        REQUEST_TIMEOUT,
         INTERNAL_SERVER_ERROR,
         CONFLICT,
         TOO_MANY_REQUESTS,
