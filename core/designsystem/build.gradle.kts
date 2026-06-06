@@ -28,16 +28,15 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
 
                 implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
             // Add KMP dependencies here
             }
         }
 
         androidMain {
             dependencies {
-                // Add Android-specific dependencies here. Note that this source set depends on
-                // commonMain by default and will correctly pull the Android artifacts of any KMP
-                // dependencies declared in commonMain.
-            }
+                implementation(libs.androidx.compose.ui.tooling)
+           }
         }
 
         iosMain {
@@ -50,5 +49,4 @@ kotlin {
             }
         }
     }
-
 }

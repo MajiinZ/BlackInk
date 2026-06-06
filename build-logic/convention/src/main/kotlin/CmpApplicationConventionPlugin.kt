@@ -1,3 +1,5 @@
+import mz.blackink.convention.configureAndroidTarget
+import mz.blackink.convention.configureIosTargets
 import mz.blackink.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -11,7 +13,11 @@ class CmpApplicationConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.multiplatform")
                 apply("org.jetbrains.compose")
                 apply("org.jetbrains.kotlin.plugin.compose")
+
             }
+
+            configureAndroidTarget()
+            configureIosTargets()
 
             dependencies {
                 "commonMainImplementation"(project(":core:presentation"))
@@ -37,6 +43,8 @@ class CmpApplicationConventionPlugin : Plugin<Project> {
                 "androidMainImplementation"(libs.findLibrary("koin-androidx-compose").get())
                 "androidMainImplementation"(libs.findLibrary("koin-androidx-navigation").get())
                 "androidMainImplementation"(libs.findLibrary("koin-core-viewmodel").get())
+               "androidMainImplementation" (libs.findLibrary("androidx-compose-ui-tooling-preview").get())
+
             }
         }
     }
