@@ -16,6 +16,7 @@ kotlin {
                 implementation(projects.core.domain)
 
                 implementation(libs.bundles.ktor.common)
+                implementation(libs.touchlab.kermit)
             }
         }
 
@@ -41,5 +42,5 @@ android {
     buildFeatures {
         viewBinding = false
     }
-    compileSdk = 36
+    compileSdk = 37
 }

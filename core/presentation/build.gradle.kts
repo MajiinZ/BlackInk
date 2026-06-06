@@ -16,7 +16,9 @@ kotlin {
                 implementation(projects.core.domain)
                 implementation(compose.components.resources)
                 implementation(libs.jetbrains.lifecycle.compose) // lifecycle-runtime-compose (has repeatOnLifecycle)
+                implementation(libs.material3.adaptive)
             }
+
         }
 
         androidMain {

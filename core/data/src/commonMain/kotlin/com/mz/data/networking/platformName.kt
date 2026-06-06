@@ -1,2 +1,4 @@
-package com.mz.data.networking 
+package com.mz.data.networking
 
+
+expect fun platform(): String

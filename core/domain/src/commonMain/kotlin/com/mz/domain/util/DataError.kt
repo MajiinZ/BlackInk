@@ -1,13 +1,12 @@
 package com.mz.domain.util
 
-sealed interface DataError: Error {
-    enum class Remote: DataError{
+sealed interface DataError : Error {
+    enum class Remote : DataError {
         BAD_REQUEST,
+        REQUEST_TIMEOUT,
         UNAUTHORIZED,
         FORBIDDEN,
         NOT_FOUND,
-        REQUEST_TIMEOUT,
-        INTERNAL_SERVER_ERROR,
         CONFLICT,
         TOO_MANY_REQUESTS,
         NO_INTERNET,
@@ -16,13 +15,16 @@ sealed interface DataError: Error {
         SERVICE_UNAVAILABLE,
         SERIALIZATION,
         UNKNOWN
-
     }
-    enum class Local: DataError{
+
+    enum class Local : DataError {
         DISK_FULL,
-        UNABLE_TO_WRITE,
-        UNABLE_TO_READ,
+        NOT_FOUND,
+        UNKNOWN
+    }
 
-
+    enum class Connection : DataError {
+        NOT_CONNECTED,
+        MESSAGE_SEND_FAILED
     }
 }
