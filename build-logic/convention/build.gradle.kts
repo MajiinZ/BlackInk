@@ -1,12 +1,10 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-
 plugins {
     `kotlin-dsl`
 }
 
 group = "com.mz.convention.buildlogic"
-
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
@@ -14,12 +12,11 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
-    compileOnly(libs.kotlin.serialization.gradle.plugin)
+    compileOnly(libs.androidx.room.gradle.plugin)
     implementation(libs.buildkonfig.gradlePlugin)
-    implementation(libs.ksp.gradlePlugin)
-    implementation(libs.androidx.room.gradle.plugin)
     implementation(libs.buildkonfig.compiler)
 }
+
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -44,7 +41,7 @@ gradlePlugin {
             id = "com.mz.convention.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
-        register("androidApplicationCompose") {
+        register("androidComposeApplication") {
             id = "com.mz.convention.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
@@ -52,7 +49,7 @@ gradlePlugin {
             id = "com.mz.convention.cmp.application"
             implementationClass = "CmpApplicationConventionPlugin"
         }
-        register("kmpLibraryApplication"){
+        register("kmpLibrary") {
             id = "com.mz.convention.kmp.library"
             implementationClass = "KmpLibraryConventionPlugin"
         }
@@ -64,13 +61,13 @@ gradlePlugin {
             id = "com.mz.convention.cmp.feature"
             implementationClass = "CmpFeatureConventionPlugin"
         }
-        register("kmpFeature") {
-            id = "com.mz.convention.kmp.feature"
-            implementationClass = "KmpFeatureConventionPlugin"
-        }
         register("buildKonfig") {
             id = "com.mz.convention.buildkonfig"
             implementationClass = "BuildKonfigConventionPlugin"
+        }
+        register("room") {
+            id = "com.mz.convention.room"
+            implementationClass = "RoomConventionPlugin"
         }
     }
 }

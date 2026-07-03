@@ -1,3 +1,4 @@
 <resources>
-    <string name="title_activity_android_applicaition_convention_plugin">AndroidApplicaitionConventionPlugin</string>
+    <string name="title_activity_android_application.convention_plugin">AndroidApplicationConventionPlugin</string>
+    <string name="hide_password">AndroidApplicationConventionPlugin</string>
 </resources>

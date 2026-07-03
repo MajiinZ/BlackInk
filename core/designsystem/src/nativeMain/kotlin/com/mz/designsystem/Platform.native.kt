@@ -1,5 +1,5 @@
 package com.mz.designsystem
 
-actual fun getPlatform(): Platform {
+actual fun getPlatform(): com.mz.designsystem.Platform {
     TODO("Not yet implemented")
 }

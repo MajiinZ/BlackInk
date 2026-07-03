@@ -1,3 +1,5 @@
 package com.mz.designsystem
 
-actual fun platform() = "iOS"
+actual fun getPlatform(): Platform {
+    TODO("Not yet implemented")
+}
