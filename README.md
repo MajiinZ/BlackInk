@@ -1,4 +1,17 @@
-# Blackink 🔒
+# BlackInk
+
+The new standalone **Android Studio project** is in [`androidApp`](androidApp/README.md).
+Open that directory in Android Studio. It follows MzBotanicals' feature modules,
+repository contracts, ViewModels, Koin dependency injection, and navigation layer.
+It includes a runnable local draft demo; messaging and encryption are not implemented there.
+
+The original Kotlin Multiplatform scaffold is preserved below. Its security and
+platform-support descriptions are project goals, not verified guarantees of the
+new Android starter.
+
+---
+
+# Original Kotlin Multiplatform scaffold
 
 **Blackink** is a cross-platform encrypted chat application built with Kotlin Multiplatform (KMP) and Compose Multiplatform. It allows users to securely send and receive messages across Android, iOS, and Desktop — with the guarantee that **no plaintext ever leaves the device**.
 
