@@ -3,7 +3,8 @@
 The new standalone **Android Studio project** is in [`androidApp`](androidApp/README.md).
 Open that directory in Android Studio. It follows MzBotanicals' feature modules,
 repository contracts, ViewModels, Koin dependency injection, and navigation layer.
-It includes a runnable local draft demo; messaging and encryption are not implemented there.
+It includes a Telegram-inspired chat UI with sample conversations and local message
+composition; network messaging and encryption are not implemented there.
 
 The original Kotlin Multiplatform scaffold is preserved below. Its security and
 platform-support descriptions are project goals, not verified guarantees of the

@@ -21,6 +21,8 @@ dependencies {
     implementation(project(":data"))
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.material3)
+    implementation(libs.compose.icons)
+    implementation(libs.activity.compose)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.koin.androidx.compose)

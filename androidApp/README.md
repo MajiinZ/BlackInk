@@ -54,8 +54,19 @@ required for this starter. Existing parent-project sources are preserved.
 
 ## Starter scope
 
-The home screen starts empty. **New draft** adds a local in-memory entry.
-Entries disappear when the process exits. There is no backend, account system,
+The interface uses a Telegram-inspired blue toolbar, circular initial avatars,
+compact conversation rows, unread badges, pinned indicators, a navigation drawer,
+and incoming/outgoing message bubbles. It is an interpretation of familiar
+Telegram patterns, not an exact reproduction of the linked Figma community file.
+
+The home screen includes clearly labeled sample conversations. Search matches
+names and message previews; the Unread and Groups tabs filter the list. Opening a
+chat clears its unread badge. The compose button creates a named conversation,
+and its message composer adds local messages and updates the list preview.
+Saved Messages is available from the drawer. Android Back returns to the chat
+list, closes search, or dismisses the drawer.
+
+Messages and new conversations disappear when the process exits. There is no backend, account system,
 message transport, persistence, or encryption in this starter. The original
 repository's encrypted-messaging goals remain future work; this project does
 not implement or claim those security properties.
