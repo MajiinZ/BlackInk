@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "BlackInkAndroid"
 include(":app", ":shared", ":data", ":di", ":navigation", ":feature:home")
+include(":feature:workspace")

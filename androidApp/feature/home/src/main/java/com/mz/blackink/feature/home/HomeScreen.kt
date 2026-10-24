@@ -18,9 +18,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -28,7 +26,6 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mz.blackink.shared.domain.Conversation
 import com.mz.blackink.shared.domain.Message
-import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 private val InkBlue = Color(0xFF517DA2)
@@ -37,60 +34,28 @@ private val SecondaryText = Color(0xFF87939E)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
+fun HomeScreen(onOpenMenu: () -> Unit, initialConversationId: String? = null, viewModel: HomeViewModel = koinViewModel()) {
     val conversations by viewModel.conversations.collectAsStateWithLifecycle()
     val messages by viewModel.messages.collectAsStateWithLifecycle()
-    var selectedId by rememberSaveable { mutableStateOf<String?>(null) }
+    var selectedId by rememberSaveable { mutableStateOf(initialConversationId) }
     var searching by rememberSaveable { mutableStateOf(false) }
     var query by rememberSaveable { mutableStateOf("") }
     var filter by rememberSaveable { mutableIntStateOf(0) }
     var showNewChat by rememberSaveable { mutableStateOf(false) }
     var showAbout by rememberSaveable { mutableStateOf(false) }
     var newName by rememberSaveable { mutableStateOf("") }
-    val drawerState = rememberDrawerState(DrawerValue.Closed)
-    val scope = rememberCoroutineScope()
     val selected = conversations.firstOrNull { it.id == selectedId }
     val openChat: (String) -> Unit = { id -> viewModel.markRead(id); selectedId = id }
-    BackHandler(selectedId != null || searching || drawerState.isOpen) {
+    BackHandler(selectedId != null || searching) {
         when {
-            drawerState.isOpen -> scope.launch { drawerState.close() }
             selectedId != null -> selectedId = null
             else -> { searching = false; query = "" }
         }
     }
 
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        gesturesEnabled = selected == null,
-        drawerContent = {
-            ModalDrawerSheet(drawerContainerColor = Color.White) {
-                Column(Modifier.fillMaxWidth().background(InkBlue).padding(24.dp)) {
-                    Box(Modifier.size(64.dp).background(Color(0xFF77A7CF), CircleShape), contentAlignment = Alignment.Center) {
-                        Text("BI", color = Color.White, fontSize = 25.sp, fontWeight = FontWeight.Medium)
-                    }
-                    Spacer(Modifier.height(18.dp))
-                    Text("BlackInk", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
-                    Text("Your conversations, together", color = Color(0xFFD3E4F2), fontSize = 13.sp)
-                }
-                Spacer(Modifier.height(12.dp))
-                DrawerLink("All chats", Icons.Default.ChatBubbleOutline) {
-                    filter = 0; selectedId = null; scope.launch { drawerState.close() }
-                }
-                DrawerLink("New conversation", Icons.Default.Edit) {
-                    showNewChat = true; scope.launch { drawerState.close() }
-                }
-                DrawerLink("Saved Messages", Icons.Default.BookmarkBorder) {
-                    openChat("saved"); scope.launch { drawerState.close() }
-                }
-                HorizontalDivider(Modifier.padding(vertical = 12.dp))
-                DrawerLink("About BlackInk", Icons.Default.Info) {
-                    showAbout = true; scope.launch { drawerState.close() }
-                }
-                Spacer(Modifier.weight(1f))
-                Text("BlackInk for Android\nLocal demo · 1.0", Modifier.padding(28.dp), color = SecondaryText, fontSize = 12.sp)
-            }
-        },
-    ) {
+    LaunchedEffect(initialConversationId) { initialConversationId?.let(viewModel::markRead) }
+
+    Box {
         if (selected != null) {
             ConversationScreen(selected, messages.filter { it.conversationId == selected.id },
                 onBack = { selectedId = null }, onSend = { viewModel.sendMessage(selected.id, it) },
@@ -113,7 +78,7 @@ fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
                             navigationIcon = {
                                 IconButton(onClick = {
                                     if (searching) { searching = false; query = "" }
-                                    else scope.launch { drawerState.open() }
+                                    else onOpenMenu()
                                 }) { Icon(if (searching) Icons.AutoMirrored.Filled.ArrowBack else Icons.Default.Menu, if (searching) "Close search" else "Open menu") }
                             },
                             actions = {
@@ -182,12 +147,6 @@ fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
     if (showAbout) AlertDialog(onDismissRequest = { showAbout = false }, title = { Text("BlackInk") },
         text = { Text("A Telegram-inspired Android interface. These are sample conversations. Messages are stored in memory for this session; they are not sent to other people. Accounts, encryption, calls, and a backend are not connected yet.") },
         confirmButton = { TextButton(onClick = { showAbout = false }) { Text("Got it") } })
-}
-
-@Composable
-private fun DrawerLink(title: String, icon: ImageVector, onClick: () -> Unit) {
-    NavigationDrawerItem(label = { Text(title) }, selected = false, onClick = onClick,
-        icon = { Icon(icon, null, tint = InkBlue) }, modifier = Modifier.padding(horizontal = 12.dp))
 }
 
 @Composable

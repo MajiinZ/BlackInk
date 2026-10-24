@@ -31,6 +31,7 @@ Application ID: `com.mz.blackink`.
 | `shared` | Domain model and shared Compose theme | `shared` models and UI resources |
 | `data` | Repository contract and in-memory implementation | `data/domain` interfaces and repository implementations |
 | `feature:home` | Compose screen and lifecycle ViewModel | Feature-specific screens and ViewModels |
+| `feature:workspace` | Blank Contacts, Calls, Profile, and Settings Compose screens | Feature-specific screen modules |
 | `navigation` | Compose navigation graph | `navigation/NavGraph` |
 | `di` | Koin repository and ViewModel registrations | `di/KoinModule` |
 
@@ -40,6 +41,7 @@ Dependency flow:
 app -> di -> data -> shared
        |-> feature:home -> data + shared
 app -> navigation -> feature:home
+                  -> feature:workspace
 app -> shared
 ```
 
@@ -65,6 +67,27 @@ chat clears its unread badge. The compose button creates a named conversation,
 and its message composer adds local messages and updates the list preview.
 Saved Messages is available from the drawer. Android Back returns to the chat
 list, closes search, or dismisses the drawer.
+
+## Adding screens
+
+The shared hamburger drawer and bottom tabs live in
+`navigation/src/main/java/com/mz/blackink/navigation/BlackInkNavGraph.kt`.
+Bottom tabs open Chats, Contacts, Calls, and Settings. The drawer also opens
+Profile and Saved Messages. Navigation preserves tab state and avoids stacking
+duplicate destinations.
+
+Blank screens are in
+`feature/workspace/src/main/java/com/mz/blackink/feature/workspace/`:
+
+- `ContactsScreen.kt`
+- `CallsScreen.kt`
+- `ProfileScreen.kt`
+- `SettingsScreen.kt`
+
+Each has an empty Compose content block inside `BlankScreenScaffold`. Add UI
+in that block; the shared scaffold handles the title, hamburger button, and
+safe content area. To add another tab or drawer destination, register it in
+`Destination`, the appropriate destination list, and the `NavHost`.
 
 Messages and new conversations disappear when the process exits. There is no backend, account system,
 message transport, persistence, or encryption in this starter. The original
